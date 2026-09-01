@@ -17,7 +17,7 @@ Satellite → Capture Image → Store → Transmit Huge Image → Ground AI
 The AI only runs once the image reaches the ground. Which means:
 
 You're burning bandwidth sending images full of clouds, ocean, empty terrain — stuff nobody cares about
-Transmission itself costs energy, and satellites don't have much to spare
+Transmission itself costs energy, and satellites don't have much to spare.
 Everything is stuck waiting for the next ground-station pass before anything useful happens
 Latency piles up for no good reason
 
