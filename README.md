@@ -51,13 +51,13 @@ A few bytes instead of megabytes, and it's already telling you what matters.
 
 # What it actually does
 
-# Edge AI detection
+Edge AI detection
 YOLO runs on the imagery and picks out whatever's relevant to the mission.
 
-# Intelligence extraction
+Intelligence extraction
 Every detection gets turned into a compact metadata packet: object type, confidence, bounding box, location, timestamp, priority.
 
-# Mission-aware priority engine
+Mission-aware priority engine
 Not everything that gets detected deserves to be sent. A wildfire and a cloud are not the same:
 
 Wildfire → CRITICAL → send it now
@@ -68,13 +68,13 @@ Building → LOW → can wait
 
 Cloud → discard, don't bother
 
-# Smart downlink
+Smart downlink
 Simulates the realistic constraints: limited bandwidth, transmission capacity, latency, and the ground station not always being available.
 
-# Resource-aware simulation 
+Resource-aware simulation 
 Also models battery, CPU, and storage limits, because a satellite running out of power mid-pass is a real thing.
 
-# Confidence-aware transmission
+Confidence-aware transmission
 How much data actually gets sent depends on how sure the model is:
 
 Above 90% confidence → just the metadata, that's enough
@@ -83,55 +83,95 @@ Above 90% confidence → just the metadata, that's enough
 
 Below 60% → metadata plus a cropped image, since we're less sure and want the ground team to be able to double check
 
-# Edge optimization 
+Edge optimization 
 We also want to compare a normal FP32 model against an INT8-optimized one running through ONNX Runtime, to show this can realistically run on lightweight edge hardware, not just a beefy GPU.
 
 # Architecture
 Satellite Image
+
       ↓
+      
 Image Ingestion
+
       ↓
+      
 Edge AI / YOLO
+
       ↓
+      
 Intelligence Extraction
+
       ↓
+      
 Priority Engine
+
       ↓
+      
 Smart Downlink
+
       ↓
+      
 Ground Station
-Tech stack
+
+# Tech stack
 
 Python for pretty much everything. PyTorch and Ultralytics YOLO for detection, OpenCV and NumPy for image handling. FastAPI on the backend, React on the frontend, Plotly for charts and Leaflet/MapLibre for the map view. ONNX + ONNX Runtime for the edge optimization piece. PostgreSQL/PostGIS if we end up needing persistent storage with geospatial queries — optional for now. Everything tracked in Git/GitHub.
 
-Project layout
+# Project layout
 space-edge-ai/
+
 │
+
 ├── ai_engine/
+
 │   ├── detector.py
+
 │   ├── inference.py
+
 │   └── preprocessing.py
+
 │
+
 ├── mission_engine/
+
 │   ├── priority.py
+
 │   ├── scheduler.py
+
 │   ├── battery.py
+
 │   └── bandwidth.py
+
 │
+
 ├── backend/
+
 │   ├── main.py
+
 │   └── routes/
+
 │
+
 ├── frontend/
+
 │   └── src/
+
 │
+
 ├── models/
+
 ├── datasets/
+
 ├── simulation/
+
 ├── tests/
+
 │
+
 ├── requirements.txt
+
 └── README.md
+
 
 # Why we're building this
 
