@@ -4,7 +4,7 @@
 
 # Don't transmit pixels. Transmit intelligence.
 
-Space Edge AI is a simulator we built to show how satellites could actually process imagery onboard instead of just beaming everything down to Earth and figuring it out later. The idea is simple: run the AI on the satellite itself, decide what's actually worth sending, and only transmit that. Not the whole image every time.
+Orbital Edge Intelligence is a simulator we built to show how satellites could actually process imagery onboard instead of just beaming everything down to Earth and figuring it out later. The idea is simple: run the AI on the satellite itself, decide what's actually worth sending, and only transmit that. Not the whole image every time.
 
 This matters because satellites deal with some pretty hard constraints — bandwidth, power, storage, and the fact that you only get a communication window with the ground station every so often. You can't just brute-force your way past those.
 
