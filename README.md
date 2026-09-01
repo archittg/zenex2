@@ -34,11 +34,17 @@ So instead of transmitting a full image, the satellite sends something like this
 
 json
 {
+
   "target": "ship",
+  
   "confidence": 0.94,
+  
   "latitude": 19.076,
+  
   "longitude": 72.877,
+  
   "priority": "HIGH"
+  
 }
 
 A few bytes instead of megabytes, and it's already telling you what matters.
