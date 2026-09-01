@@ -51,30 +51,42 @@ A few bytes instead of megabytes, and it's already telling you what matters.
 
 # What it actually does
 
-Edge AI detection — YOLO runs on the imagery and picks out whatever's relevant to the mission.
+# Edge AI detection
+YOLO runs on the imagery and picks out whatever's relevant to the mission.
 
-Intelligence extraction — every detection gets turned into a compact metadata packet: object type, confidence, bounding box, location, timestamp, priority.
+# Intelligence extraction
+Every detection gets turned into a compact metadata packet: object type, confidence, bounding box, location, timestamp, priority.
 
-Mission-aware priority engine — not everything that gets detected deserves to be sent. A wildfire and a cloud are not the same:
+# Mission-aware priority engine
+Not everything that gets detected deserves to be sent. A wildfire and a cloud are not the same:
 
 Wildfire → CRITICAL → send it now
+
 Ship → HIGH → send it
+
 Building → LOW → can wait
+
 Cloud → discard, don't bother
 
-Smart downlink — simulates the realistic constraints: limited bandwidth, transmission capacity, latency, and the ground station not always being available.
+# Smart downlink
+Simulates the realistic constraints: limited bandwidth, transmission capacity, latency, and the ground station not always being available.
 
-Resource-aware simulation — also models battery, CPU, and storage limits, because a satellite running out of power mid-pass is a real thing.
+# Resource-aware simulation 
+Also models battery, CPU, and storage limits, because a satellite running out of power mid-pass is a real thing.
 
-Confidence-aware transmission — how much data actually gets sent depends on how sure the model is:
+# Confidence-aware transmission
+How much data actually gets sent depends on how sure the model is:
 
 Above 90% confidence → just the metadata, that's enough
+
 60–90% → metadata plus a thumbnail
+
 Below 60% → metadata plus a cropped image, since we're less sure and want the ground team to be able to double check
 
-Edge optimization — we also want to compare a normal FP32 model against an INT8-optimized one running through ONNX Runtime, to show this can realistically run on lightweight edge hardware, not just a beefy GPU.
+# Edge optimization 
+We also want to compare a normal FP32 model against an INT8-optimized one running through ONNX Runtime, to show this can realistically run on lightweight edge hardware, not just a beefy GPU.
 
-Architecture
+# Architecture
 Satellite Image
       ↓
 Image Ingestion
