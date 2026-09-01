@@ -1,0 +1,35 @@
+import json
+import os
+
+def generate_lightweight_metadata(yolo_results, output_json="telemetry_metadata.json"):
+    """
+    Extracts raw pixels into structured JSON metadata for low-bandwidth ground station downlinks.
+    """
+    metadata_packet = []
+    
+    # Extract boxes, classes, and confidence attributes
+    boxes = yolo_results.boxes
+    for i in range(len(boxes)):
+        class_id = int(boxes.cls[i].item())
+        class_name = yolo_results.names[class_id]
+        confidence = float(boxes.conf[i].item())
+        coords = boxes.xyxy[i].tolist() # [x1, y1, x2, y2]
+        
+        item = {
+            "target_class": class_name,
+            "confidence_score": round(confidence, 4),
+            "bounding_box": [round(c, 2) for c in coords]
+        }
+        metadata_packet.append(item)
+
+    # Dump into a highly compact JSON payload
+    with open(output_json, "w") as f:
+        json.dump(metadata_packet, f, indent=2)
+        
+    print(f"[+] Metadata payload saved to {output_json} ({os.path.getsize(output_json)} bytes)")
+    return output_json
+
+if __name__ == "__main__":
+    from satellite_inference import run_onboard_inference
+    res = run_onboard_inference("https://ultralytics.com/images/bus.jpg")
+    generate_lightweight_metadata(res)
