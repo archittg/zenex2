@@ -1,4 +1,4 @@
-# Space Edge AI
+# Orbital Edge Intelligence
 
 # Autonomous Satellite Intelligence & Smart Downlink Simulator
 
