@@ -178,3 +178,5 @@ space-edge-ai/
 The end goal isn't just "satellites that take pictures and send them down." It's satellites that actually understand what they're looking at, decide what's worth telling us, and communicate that — on their own, without waiting around for someone on the ground to sort through the noise.
 
 Don't transmit pixels. Transmit intelligence.
+<img width="1283" height="700" alt="image" src="https://github.com/user-attachments/assets/ed3869b1-c7b8-48d0-bdbd-7cbddbcf7ab2" />
+
