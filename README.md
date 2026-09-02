@@ -27,7 +27,7 @@ Basically, a lot of the data being sent down was never going to be useful in the
 
 We flip the order — run the AI first, on the satellite, then decide what to send:
 
-Satellite Image → Edge AI → Object/Event Detection → Intelligence Extraction
+Satellite Image → Orbital Edge → Object/Event Detection → Intelligence Extraction
 → Mission Priority Engine → Smart Downlink → Ground Station
 
 So instead of transmitting a full image, the satellite sends something like this:
