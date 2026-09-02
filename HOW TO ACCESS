@@ -4,3 +4,5 @@ Then run python -m uvicorn main:app. Open http://127.0.0.1:8000 in a web browser
 
 URL - https://zenex2.onrender.com/
 (might not work due to server issues in render leading to poor deployment.
+
+For testing, you can use the images from the README file and upload them (multiple images permitted).
